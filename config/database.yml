@@ -1,0 +1,17 @@
+default: &default
+  adapter: mysql2
+  pool: 5
+
+development:
+  <<: *default
+  database: projects_db
+  username: Killit
+  password: XUs&k1&2o#uz
+
+
+test:
+  <<: *default
+
+
+production:
+  <<: *default
