@@ -1,0 +1,33 @@
+<article class="task">
+  <section class="task-head">
+    <h1><%= @task.title %></h1>
+    <small>
+      <time><%= @task.created_at.to_date.strftime("%d %B, %Y") %></time>
+      <% if @task.project.present? %>
+        |
+        <%= link_to @task.project.name, @task.project %>
+      <% end %>
+      <% if user_signed_in? %>
+      |
+      <%= link_to 'Edit', edit_task_path(@task) %>
+      |
+      <%= link_to 'Delete', task_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+      <% end %>
+    </small>
+  </section>
+
+  <section class="task-responsible">
+    <label>Responsible:</label>
+    <%= @task.user.first_name %>
+    <%= @task.user.last_name %>
+  </section>
+
+  <section class="task-status">
+    <label>Status:</label>
+    <%= @task.status %>
+  </section>
+
+  <section class="task-description">
+    <%= @task.description %>
+  </section>
+</article>
